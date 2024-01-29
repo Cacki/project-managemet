@@ -11,7 +11,6 @@ import static org.junit.Assert.assertNotNull;
 public class DocumentTest {
     @Test
     public void testDocumentCreation() {
-        // Arrange
         int documentId = 1;
         String documentTitle = "Sample Document";
         String documentTopic = "Programming";
@@ -20,7 +19,6 @@ public class DocumentTest {
         User documentCreator = new User("John Doe");
         Project documentProject = new Project.ProjectBuilder(1, "Sample Project").build();
 
-        // Act
         Document document = new Document.DocumentBuilder()
                 .id(documentId)
                 .title(documentTitle)
@@ -31,7 +29,6 @@ public class DocumentTest {
                 .project(documentProject)
                 .build();
 
-        // Assert
         assertNotNull(document);
         assertEquals(documentId, document.getId());
         assertEquals(documentTitle, document.getTitle());

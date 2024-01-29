@@ -14,21 +14,18 @@ import static org.junit.Assert.assertNotNull;
 public class ProjectTest {
     @Test
     public void testProjectCreation() {
-        // Arrange
         int projectId = 1;
         String projectName = "Sample Project";
         String projectDescription = "A sample project description";
         User projectCreator = new User("John Doe");
         Set<Document> projectDocuments = new HashSet<>();
 
-        // Act
         Project project = new Project.ProjectBuilder(projectId, projectName)
                 .description(projectDescription)
                 .creator(projectCreator)
                 .documents(projectDocuments)
                 .build();
 
-        // Assert
         assertNotNull(project);
         assertEquals(projectId, project.getId());
         assertEquals(projectName, project.getName());
