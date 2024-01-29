@@ -2,11 +2,12 @@ package org.example.model.user;
 
 import org.example.model.project.Project;
 import org.example.model.role.Role;
+import org.example.persistance.Persistable;
 
 import java.util.Map;
 import java.util.Set;
 
-public class User {
+public class User implements Persistable {
     private int id;
     private String username;
     private Map<Project, Set<Role>> rolesOnProjects;

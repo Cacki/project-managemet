@@ -2,8 +2,9 @@ package org.example.model.document;
 
 import org.example.model.project.Project;
 import org.example.model.user.User;
+import org.example.persistance.Persistable;
 
-public class Document extends DocumentBase {
+public class Document extends DocumentBase implements Persistable {
 
     private Document(DocumentBuilder builder) {
         this.id = builder.id;

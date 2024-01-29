@@ -2,10 +2,11 @@ package org.example.model.project;
 
 import org.example.model.document.Document;
 import org.example.model.user.User;
+import org.example.persistance.Persistable;
 
 import java.util.Set;
 
-public class Project extends ProjectBase {
+public class Project extends ProjectBase implements Persistable {
     private Project(ProjectBuilder builder) {
         this.id = builder.id;
         this.name = builder.name;
