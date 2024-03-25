@@ -2,8 +2,77 @@ package org.example.model.document;
 
 import org.example.model.project.Project;
 import org.example.model.user.User;
+import org.example.persistance.Persistable;
 
-public class Document extends DocumentBase {
+public class Document implements Persistable {
+    private int id;
+    private String title;
+    private String topic;
+    private String content;
+    private String description;
+    private User creator;
+    private Project project;
+
+    @Override
+    public int getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Document() {
+    }
 
     private Document(DocumentBuilder builder) {
         this.id = builder.id;
@@ -15,7 +84,15 @@ public class Document extends DocumentBase {
         this.project = builder.project;
     }
 
-    public static class DocumentBuilder extends DocumentBase {
+    public static class DocumentBuilder {
+        private int id;
+        private String title;
+        private String topic;
+        private String content;
+        private String description;
+        private User creator;
+        private Project project;
+
         public DocumentBuilder id(Integer id) {
             this.id = id;
             return this;

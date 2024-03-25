@@ -2,16 +2,25 @@ package org.example.model.user;
 
 import org.example.model.project.Project;
 import org.example.model.role.Role;
+import org.example.persistance.Persistable;
 
 import java.util.Map;
 import java.util.Set;
 
-public class User {
+public class User implements Persistable {
     private int id;
     private String username;
     private Map<Project, Set<Role>> rolesOnProjects;
 
+    public User() {
+    }
+
     public User(String username) {
+        this.username = username;
+    }
+
+    public User(int id, String username) {
+        this.id = id;
         this.username = username;
     }
 
@@ -19,6 +28,10 @@ public class User {
         this.id = id;
         this.username = username;
         this.rolesOnProjects = rolesOnProjects;
+    }
+
+    public User(int id) {
+        this.id = id;
     }
 
     public int getId() {
