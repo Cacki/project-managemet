@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 public interface PersistableManager {
-    OperationStatus create(Persistable persistable) throws FileNotFoundException;
+    OperationStatus create(Persistable persistable);
 
     <T extends Persistable> List<T> read(Class<T> type);
 
