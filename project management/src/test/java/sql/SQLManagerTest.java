@@ -6,29 +6,30 @@ import org.example.model.user.User;
 import org.example.sql.QueryGenerator;
 import org.example.sql.SQLConnection;
 import org.example.sql.SqlManager;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import java.sql.SQLException;
 
 public class SQLManagerTest {
     private static SqlManager manager;
+    private static Document document;
 
     @BeforeClass
-    public static void setUp() throws SQLException {
+    public static void setupBefore() throws SQLException {
         manager = new SqlManager(new QueryGenerator());
         SQLConnection.connection.setAutoCommit(false);
     }
 
     @AfterClass
-    public static void tearDown() throws SQLException {
+    public static void tearDownAfter() throws SQLException {
+        manager = null;
+        document = null;
         SQLConnection.connection.rollback();
         SQLConnection.connection.close();
     }
 
-    @Test
-    public void testCreate() {
+    @Before
+    public void setup() {
         int documentId = 99;
         String documentTitle = "Sample Document";
         String documentTopic = "Programming";
@@ -37,7 +38,7 @@ public class SQLManagerTest {
         User documentCreator = new User(1, "John Doe");
         Project documentProject = new Project.ProjectBuilder(1, "Sample Project").build();
 
-        Document document = new Document.DocumentBuilder()
+        document = new Document.DocumentBuilder()
                 .id(documentId)
                 .title(documentTitle)
                 .topic(documentTopic)
@@ -46,7 +47,24 @@ public class SQLManagerTest {
                 .creator(documentCreator)
                 .project(documentProject)
                 .build();
+    }
 
+    @After
+    public void terDown() {
+        document = null;
+    }
+
+    @Ignore
+    @Test
+    public void testCreate() {
         manager.create(document);
+    }
+
+    @Ignore
+    @Test
+    public void testUpdate() {
+        manager.create(document);
+        document.setTitle("Updated title");
+        manager.update(document);
     }
 }

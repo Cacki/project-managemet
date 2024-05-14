@@ -63,9 +63,9 @@ public class DocumentQueryTest {
 
     @Test
     public void testUpdate() {
-        String expected = "UPDATE documents SET (title = 'Sample Document', topic = 'Programming', " +
+        String expected = "UPDATE documents SET title = 'Sample Document', topic = 'Programming', " +
                 "content = 'This is the content of the document.', description = 'A sample document description.'," +
-                " user_id = 1, project_id = 1) WHERE id = 1;";
+                " user_id = 1, project_id = 1 WHERE id = 1;";
 
         String query = queryGenerator.generateUpdateQuery(document);
 

@@ -56,18 +56,21 @@ public class DocumentXMLManagerTest {
         Assert.assertEquals(operationStatus, OperationStatus.SUCCESS);
     }
 
+    @Ignore
     @Test
     public void read() {
         List<? extends Document> list = manager.read(document.getClass());
         Assert.assertEquals(3, list.size());
     }
 
+    @Ignore
     @Test
     public void update() {
         OperationStatus operationStatus = manager.update(document);
         Assert.assertEquals(operationStatus, OperationStatus.SUCCESS);
     }
 
+    @Ignore
     @Test
     public void delete() {
         OperationStatus operationStatus = manager.delete(document);

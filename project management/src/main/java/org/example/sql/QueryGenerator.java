@@ -12,7 +12,7 @@ public class QueryGenerator {
     private final String INSERT_COMMAND = "INSERT INTO %s (%s) VALUES (%s);";
     private final String SELECT_FROM_WHERE_USER_ID = "SELECT * FROM %s WHERE user_id = %s;";
     private final String SELECT_ALL_COMMAND = "SELECT * FROM %s";
-    private final String UPDATE_COMMAND = "UPDATE %s SET (%s) WHERE id = %s;";
+    private final String UPDATE_COMMAND = "UPDATE %s SET %s WHERE id = %s;";
     private final String DELETE_COMMAND = "DELETE FROM %s WHERE id = %s";
 
     //queries

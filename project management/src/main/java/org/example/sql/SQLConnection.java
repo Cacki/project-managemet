@@ -1,22 +1,26 @@
 package org.example.sql;
 
+import org.example.utils.SQLMessages;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SQLConnection {
+    private static final Logger LOGGER = Logger.getLogger(SQLConnection.class.getName());
     private static String url = "jdbc:postgresql://localhost:5432/projectmanagement";
     private static String username = "postgres";
     private static String password = "postgres";
     public static Connection connection;
 
-    // Initialize the connection when the class is loaded
     static {
         try {
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             e.printStackTrace();
-            System.err.println("Failed to connect to the database. Exiting program...");
+            LOGGER.log(Level.SEVERE, SQLMessages.FAILED_TO_CONNECT_TO_DB);
             System.exit(1);
         }
     }
