@@ -85,7 +85,7 @@ public class DocumentQueryTest {
     public void testSelect() {
         String expected = "SELECT * FROM documents";
 
-        String query = queryGenerator.generateSelectQuery(document);
+        String query = queryGenerator.generateSelectQuery(document.getClass().getSimpleName());
 
         assertEquals(expected, query);
     }

@@ -28,7 +28,9 @@ public class SqlManager implements PersistableManager {
 
     @Override
     public <T extends Persistable> List<T> read(Class<T> type) {
-        return List.of();
+        String selectQuery = queryGenerator.generateSelectQuery(type.getSimpleName());
+        LOGGER.log(Level.INFO, String.format(SQLMessages.QUERY_INFO, selectQuery));
+        return null; //@TODO handle select query response
     }
 
     @Override
@@ -40,7 +42,9 @@ public class SqlManager implements PersistableManager {
 
     @Override
     public OperationStatus delete(Persistable persistable) {
-        return null;
+        String deleteQuery = queryGenerator.generateDeleteQuery(persistable);
+        LOGGER.log(Level.INFO, String.format(SQLMessages.QUERY_INFO, deleteQuery));
+        return executeStatement(deleteQuery);
     }
 
     private OperationStatus executeStatement(String query) {

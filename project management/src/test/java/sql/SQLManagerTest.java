@@ -67,4 +67,17 @@ public class SQLManagerTest {
         document.setTitle("Updated title");
         manager.update(document);
     }
+
+    @Ignore
+    @Test
+    public void testDelete() {
+        manager.create(document);
+        manager.delete(document);
+    }
+
+    @Ignore
+    @Test
+    public void testRead() {
+        manager.read(document.getClass());
+    }
 }

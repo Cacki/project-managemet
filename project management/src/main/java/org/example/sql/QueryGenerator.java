@@ -38,9 +38,9 @@ public class QueryGenerator {
         return String.format(DELETE_COMMAND, tableName, id);
     }
 
-    public String generateSelectQuery(Persistable persistable) {
-        String tableName = getTableName(persistable);
-        return String.format(SELECT_ALL_COMMAND, tableName);
+    public String generateSelectQuery(String className) {
+        String tableName = className + "s";
+        return String.format(SELECT_ALL_COMMAND, tableName.toLowerCase());
     }
 
     //others
